@@ -1,0 +1,38 @@
+
+.navbar-nav > li, .navbar-nav {
+	float: left !important;
+}
+.navbar-nav-right > li, .navbar-nav-right {
+	float: right !important;
+}
+.navbar-inverse .nav-stacked > li > a {
+	color: #00E5C9;
+}
+.navbar-inverse .nav-stacked > .active > a, .navbar-inverse .nav-stacked > li > a:hover, .navbar-inverse .nav-stacked > li > a:focus {
+	background-color: #00E5C9; color: white;
+}
+label {
+	font-family: 'Poppins';
+	font-size: 24px;
+	color: white;
+}
+input {
+	background-color: lightgray;
+}
+a {
+	font-family: 'Poppins';
+}
+
+.zoom {
+	transition: transform .2s;
+	outline: none;
+	color: white;
+}
+
+.zoom:hover {
+	transform: scale(1.20);
+}
+
+button, a {
+	outline: none;
+}

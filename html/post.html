@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap 3 Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href = "../css/post.css">
+  <script src = "../js/auth.js"></script>
+  <script src = "../js/post.js"></script>
+</head>
+<body data-spy = "scroll" data-offset = "90" data-target = ".navbar">
+	<nav class="navbar navbar-default navbar-fixed-top" style = "background: linear-gradient(.25turn, #4EC6CF, 50%, #70FAC0); border: 0px">
+		<div class="container-fluid">
+	      	<ul class = "nav navbar-nav">
+	      		<li><a class="navbar-brand" style = "color: white; font-family: 'Poppins'" href="#" id = "homepage">GreenEarth</a></li>
+	      		<li class="nav-item"><a style = "color: white; font-family: 'Poppins'" href = "#" id = "about"> About </a></li>
+				<li class="nav-item"><a style = "color: white; font-family: 'Poppins'" href = "#" id = "allposts"> Posts </a></li>
+			</ul>
+			<ul class = "nav navbar-nav navbar-nav-right">
+				<li class = "nav-item dropdown" id = "dropdown" style = "margin-top: 9px">
+				    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" style = "background-color: transparent; border: 0px; font-family: Poppins" id = "dropdownUsername">
+				    	<span class="caret"></span>
+				   </button>
+				    <ul class="dropdown-menu pull-right" style = "margin-top: 9px; width: 20px">
+				      <li><a class = "trigger-btn" href = "profile.html" style = "color: #00E5C9; font-family: 'Poppins'" id = "profSign"> Profile </a></li>
+				      <li><a class = "trigger-btn" data-toggle = "modal" style = "color: #00E5C9; font-family: 'Poppins'" href = "#logoutmodal" id = "logoutSign"> Logout </a></li>
+				    </ul>
+				 </li>
+				<li class="nav-item"><a class = "trigger-btn" data-toggle = "modal" href = "#loginmodal" style = "color: white; font-family: 'Poppins'" id = "loginSign"> Log in </a></li>
+				<li class="nav-item"><a class = "trigger-btn" data-toggle = "modal" style = "color: white; font-family: 'Poppins'" href = "#signupmodal" id = "signupSign"> Sign up </a></li>
+			</ul>
+	    </div>
+	</nav>
+
+	<div class = "sidebar nav" style = "margin: 0; width: 200px; background-color: #f1f1f1; position: fixed; height: 100%; overflow: auto; padding: 20px; padding-top: 40px">
+		<nav class="navbar navbar-inverse" style = "background-color: #f1f1f1; border: 0px; text-align: center; height: 95%" id = "navbar">
+			<div class="container-fluid">
+				<ul class = "nav nav-pills nav-stacked" style = "padding-top: 20px" id = "navbar-scroll">
+					<li><a href = "#Description" class = "nav-link" style = "font-size: 16px; font-family: Poppins">Description</a></li>
+					<li><a href = "#Materials" class = "nav-link" style ="font-size: 16px; font-family: Poppins">Materials</a></li>
+					<li><a href = "#Directions" class = "nav-link" style ="font-size: 16px; font-family: Poppins">Directions</a></li>
+					<li><a href = "#Comments" class = "nav-link" style = "font-size: 16px; font-family: Poppins">Comments</a></li>
+				</ul>
+				<div class = "row" style = "position: absolute; bottom: 0">
+					<div class = "col-sm-6">
+						<button class = "btn btn-link btn-lg zoom" id = "editPost" style = "background-color: #00E5C9; width: 50px; height: 50px; margin-top: 20px; border-radius: 25px">
+	        				<i class = "glyphicon glyphicon-pencil" style = "color: white"></i>
+	      				</button>
+					</div>
+					<div class = "col-sm-6">
+						<a href = "#deletepostmodal" class = "trigger-btn" data-toggle = "modal">
+							<button class = "btn btn-link btn-lg zoom" type = "button" id = "deletePost" style = "background-color: #00E5C9; width: 50px; height: 50px; margin-top: 20px; border-radius: 25px; text-align: center">
+	        					<i class = "glyphicon glyphicon-trash" style = "color: white"></i>
+	      					</button>
+	      				</a>
+					</div>
+				</div>
+			</div>
+		</nav>
+	</div>
+	<div class = "container" style = "height: 100%; margin-left: 240px; width: calc(100% - 240px); padding-right: 40px">
+		<div class = "row" style = "height: 100%; padding: 0px; padding-bottom: 20px; padding-top: 20px">
+		</div>
+		<div class = "row" style = "margin-top: 30px; margin-bottom: 50px" id = "Description">
+			<div class = "col-sm-6">
+				<h1 style = "color: #00E5C9" id = "projTitle"></h1>
+				<h4 style = "margin-top: 20px; cursor: pointer" id = "projAuthor"></h4>
+				<p style = "margin-top: 30px; margin-bottom: 30px; font-size: 18px" id = "projDescription"></p>
+			</div>
+			<div class = "col-sm-6">
+				<a class = "trigger-btn" data-toggle = "modal" href = "#postimgmodal">
+					<img src="" class="img-responsive img-rounded" id = "popupImage" style = "box-shadow: 0px 0px 20px 3px grey; border-radius: 50px; height: 350px; width: 100%; object-fit: cover;">
+				</a>
+			</div>
+		</div>
+		<div class = "row" style = "padding: 20px; box-shadow: 0px 5px 10px 1px gray;position: relative; border-radius: 10px; margin-bottom: 30px; background-color: #00E5C9" id = "Materials">
+			<h3 style = "color: white">Materials</h3>
+			<ul class = "list-group" style = "margin-top: 20px; font-family: 'Poppins'; font-weight: lighter" id = "materialsList">
+			</ul>
+		</div>
+		<div class = "row" style = "padding: 20px; box-shadow: 0px 5px 10px 1px gray;position: relative; border-radius: 10px; margin-bottom: 30px; background-color: #00E5C9" id = "Directions">
+			<h3 style = "color: white">Directions</h3>
+			<ol class = "list-group" style = "margin-top: 20px; list-style: decimal inside; font-family: 'Poppins'; font-weight: lighter" id = "directionsList">
+			</ol>
+		</div>
+		<div class = "row" style = "padding: 20px; margin-bottom: 30px; box-shadow: 0px 5px 10px 1px gray; position: relative; border-radius: 10px; background-color: #00E5C9" id = "Comments">
+			<h3 style = "color: white">Comments</h3>
+			<form id = "addCommentForm">
+	          <div class = "input-group text-center" style = "margin-top: 15px">
+	            <input type = "text" class = "form-control input-lg" placeholder = "Comment" style = "color: #00E5C9; border-width: 0px; border-color: #00E5C9; font-family: Poppins" id = "commentText">
+	            <div class = "input-group-btn">
+	              <button class = "btn btn-default btn-lg" style = "color: #00E5C9; background-color: white; border-width: 1px; border-color: white; padding-right: 20px" id = "submitComment">
+	                <i class = "glyphicon glyphicon-chevron-right"></i>
+	              </button>
+	            </div>
+	          </div>
+	        </form>
+			<ol class = "list-group" style = "margin-top: 20px" id = "commentsList">
+			</ol>
+		</div>
+	</div>
+
+
+	<div id="loginmodal" class="modal fade">
+		<div class="modal-dialog modal-login" style = "width: 400px">
+			<div class="modal-content">
+				<form>
+					<div class="modal-header" style = "background: linear-gradient(.25turn, #4EC6CF, 50%, #70FAC0); border-color: #00E5C9; border-top-left-radius: 5px; border-top-right-radius: 5px">
+						<h3 class="modal-title" style = "color: white" id = "loginSign">Login<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button></h3>
+					</div>
+					<div class="modal-body">
+						<div class="form-group">
+							<input type="text" class="form-control" required="required" placeholder = "Username" style = "font-family: 'Poppins'" id = "loginUsername" maxLength = "20">
+						</div>
+						<div class="form-group">
+							<input type="password" class="form-control" required="required" placeholder = "Password" style = "font-family: 'Poppins'" id = "loginPassword" maxLength = "20">
+						</div>
+						<p id = "loginincorrect" style = "color: red">Incorrect username or password</p>
+					</div>
+					<div class="modal-footer">
+						<input type = "button" class="btn btn-default" value="Log in" style = "font-family: 'Poppins'; color: white; background-color: #00E5C9" id = "loginBtn">
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+
+	<div id="signupmodal" class="modal fade">
+		<div class="modal-dialog modal-login" style = "width: 400px">
+			<div class="modal-content">
+				<form>
+					<div class="modal-header" style = "background: linear-gradient(.25turn, #4EC6CF, 50%, #70FAC0); border-color: #00E5C9; border-top-left-radius: 5px; border-top-right-radius: 5px">
+						<h3 class="modal-title" style = "color: white">Signup<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button></h3>
+					</div>
+					<div class="modal-body">	
+						<div class="form-group">
+							<input type="text" class="form-control" required="required" placeholder = "Username" style = "font-family: 'Poppins'" value = "" id = "signupUsername" maxLength = "20">
+						</div>
+						<div class="form-group">
+							<input type="password" class="form-control" required="required" placeholder = "Password" style = "font-family: 'Poppins'" value = "" id = "signupPassword" maxLength = "20">
+						</div>
+						<p id = "signupincorrect" style = "color: red">Incorrect username or password</p>
+					</div>
+					<div class="modal-footer">
+						<input type = "button" class="btn btn-default" value="Sign up" style = "font-family: 'Poppins'; color: white; background-color: #00E5C9" id = "signupBtn">
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+
+	<div id="logoutmodal" class="modal fade">
+		<div class="modal-dialog modal-login" style = "width: 400px">
+			<div class="modal-content">
+				<form>
+					<div class="modal-header" style = "background: linear-gradient(.25turn, #4EC6CF, 50%, #70FAC0); border-color: #00E5C9; border-top-left-radius: 5px; border-top-right-radius: 5px">
+						<h3 class="modal-title" style = "color: white">Logout successful<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button></h3>
+					</div>
+					<div class="modal-footer">
+						<input type = "button" id = "logout" class="btn btn-default" value="Ok" style = "font-family: 'Poppins'; color: white; background-color: #00E5C9">
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+
+	<div id="postimgmodal" class="modal fade">
+	  <div class="modal-dialog modal-login" style = "width: 400px">
+	    <div class="modal-content">
+	      <form>
+	        <div class="modal-header" style = "background: linear-gradient(.25turn, #4EC6CF, 50%, #70FAC0); border-color: #00E5C9; border-top-left-radius: 5px; border-top-right-radius: 5px">
+	        	<h3 class="modal-title" style = "color: white">Image<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button></h3>
+	        </div>
+	        <div class="modal-body">  
+	          	<img src="https://lp-cms-production.imgix.net/features/2015/12/Manarola_cs.jpg?format=auto" class="img-responsive img-rounded" alt="Cinque Terre" id = "projImage" style = "box-shadow: 0px 0px 20px 3px grey; border-radius: 50px; height: 100%; width: 100%">
+	        </div>
+	      </form>
+	    </div>
+	  </div>
+	</div>
+
+	<div id="deletepostmodal" class="modal fade">
+	  <div class="modal-dialog modal-login" style = "width: 400px">
+	    <div class="modal-content">
+	      <form>
+	        <div class="modal-header" style = "background: linear-gradient(.25turn, #4EC6CF, 50%, #70FAC0); border-color: #00E5C9; border-top-left-radius: 5px; border-top-right-radius: 5px">
+	        	<h3 class="modal-title" style = "color: white">Delete Post?<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button></h3>
+	        </div>
+	        <div class="modal-footer">
+				<input type = "button" id = "yesdelete" class="btn btn-default" value="Yes" style = "font-family: 'Poppins'; color: white; background-color: #00E5C9">
+				<input type = "submit" id = "nodelete" class="btn btn-default" value="No" style = "font-family: 'Poppins'; color: white; background-color: red">
+			</div>
+	      </form>
+	    </div>
+	  </div>
+	</div>
+
+</body>
+</html>

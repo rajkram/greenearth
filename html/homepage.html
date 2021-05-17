@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap 3 Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href = "../css/homepage.css">
+  <script src = "../js/auth.js"></script>
+  <script src = "../js/homepage.js"></script>
+</head>
+<body>
+<div class="navbar navbar-default navbar-fixed-top" style = "background: linear-gradient(.25turn, #4EC6CF, 50%, #70FAC0);border: 0px">
+	<div class="container-fluid">
+		<ul class = "nav navbar-nav">
+		  <li><a class="navbar-brand" style = "color: white; font-family: 'Poppins'" href="#" id = "homepage">GreenEarth</a></li>
+		  <li class="nav-item"><a style = "color: white; font-family: 'Poppins'" href = "#" id = "about"> About </a></li>
+		  <li class="nav-item"><a style = "color: white; font-family: 'Poppins'" href = "#" id = "allposts"> Posts </a></li>
+		</ul>
+		<ul class = "nav navbar-nav navbar-nav-right">
+			<li class = "nav-item dropdown" id = "dropdown" style = "margin-top: 9px">
+			    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" style = "background-color: transparent; border: 0px; font-family: Poppins" id = "dropdownUsername">
+			    	<span class="caret"></span>
+			   </button>
+			    <ul class="dropdown-menu pull-right" style = "margin-top: 9px; width: 20px">
+			      <li><a class = "trigger-btn" href = "profile.html" style = "color: #00E5C9; font-family: 'Poppins'" id = "profSign"> Profile </a></li>
+			      <li><a class = "trigger-btn" data-toggle = "modal" style = "color: #00E5C9; font-family: 'Poppins'" href = "#logoutmodal" id = "logoutSign"> Logout </a></li>
+			    </ul>
+			 </li>
+			<li class="nav-item"><a class = "trigger-btn" data-toggle = "modal" href = "#loginmodal" style = "color: white; font-family: 'Poppins'" id = "loginSign"> Log in </a></li>
+			<li class="nav-item"><a class = "trigger-btn" data-toggle = "modal" style = "color: white; font-family: 'Poppins'" href = "#signupmodal" id = "signupSign"> Sign up </a></li>
+		</ul>
+	</div>
+</div>
+
+<div class = "jumbotron text-center" style = "background: url('https://news.sap.com/wp-content/blogs.dir/1/files/278132_278132_l_srgb_s_gl_F3.jpg'); background-size: cover; padding: 13%; margin-bottom: -10px">
+	<div class = "container">
+		<h1 style = "color: white; font-size: 75px; padding-bottom: 5%; text-shadow: 6px 6px 20px black">Find your next project</h1>
+		<form>
+			<div class = "input-group text-center" style = "margin-left: 15%; margin-right: 15%">
+				<input type = "text" class = "form-control" placeholder = "Search by material (e.g. cans, bottles...)" style = "-webkit-border-radius: 50px; -moz-border-radius: 50px; border-radius: 50px; font-family: 'Poppins'; height: 50px; font-size: 30px; padding: 30px; border-bottom-right-radius: 0px; border-top-right-radius: 0px; border-color: #00E5C9; border-width: 3px" id = "homeSearchText">
+				<div class = "input-group-btn">
+					<button class = "btn btn-default" type = "button" style = "-webkit-border-radius: 50px; -moz-border-radius: 50px; border-radius: 50px; height: 66px; border-bottom-left-radius: 0px; border-top-left-radius: 0px; color: white; background-color: #00E5C9; border-color: #00E5C9; width: 60px; outline: none" id = "homeSearchButton">
+						<i class = "glyphicon glyphicon-search" style = "font-size: 20px"></i>
+					</button>
+				</div>
+			</div>
+		</form>	
+	</div>	
+	
+</div>
+
+<div class="text-center">
+  <!-- Button HTML (to Trigger Modal) -->
+	<a href="#loginmodal" class="trigger-btn" data-toggle="modal"></a>
+</div>
+<div class="text-center">
+  <!-- Button HTML (to Trigger Modal) -->
+	<a href="#signupmodal" class="trigger-btn" data-toggle="modal"></a>
+</div>
+<div class = "container" id = "postGrid" style = "margin-bottom: 30px">
+	<div class = "row" style = "height: 100%; padding: 20px">
+		<div class = "col-sm-9" style = "display: flex; justify-content: left; align-items: center; height: 60px">
+			<h1 style = "color: #00E5C9"> Featured Projects</h1>
+		</div>
+		<div class = "col-sm-3" style ="display: flex; justify-content: center; flex-direction: column;
+          align-items: flex-end; height: 60px">
+			<button class = "btn btn-link btn-lg zoom" type = "button" style = "background-color: #00E5C9; width: 50px; height: 50px; border-radius: 25px; position: relative; outline: none" id = "moreposts">
+       			<i class = "glyphicon glyphicon-arrow-right" style = "color: white"></i>
+       		</button>
+		</div>
+	</div>
+	<div class = "row" style = "text-align: center" id = "loading">
+		<h2 class="glyphicon glyphicon-refresh spinning" style = "text-align: center"></h2> 
+	</div>
+</div>
+<div id="loginmodal" class="modal fade">
+  <div class="modal-dialog modal-login" style = "width: 400px">
+    <div class="modal-content">
+      <form>
+        <div class="modal-header" style = "background: linear-gradient(.25turn, #4EC6CF, 50%, #70FAC0); border-color: #00E5C9; border-top-left-radius: 5px; border-top-right-radius: 5px">
+          <h3 class="modal-title" style = "color: white" id = "loginSign">Login<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button></h3>
+        </div>
+        <div class="modal-body">
+          <div class="form-group">
+            <input type="text" class="form-control" required="required" placeholder = "Username" style = "font-family: 'Poppins'" id = "loginUsername" maxLength = "20">
+          </div>
+          <div class="form-group">
+            <input type="password" class="form-control" required="required" placeholder = "Password" style = "font-family: 'Poppins'" id = "loginPassword" maxLength = "20">
+          </div>
+          <p id = "loginincorrect" style = "color: red">Incorrect username or password</p>
+        </div>
+        <div class="modal-footer">
+          <input class="btn btn-default" type = "button" value="Log in" style = "font-family: 'Poppins'; color: white; background-color: #00E5C9" id = "loginBtn">
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div id="signupmodal" class="modal fade">
+  <div class="modal-dialog modal-login" style = "width: 400px">
+    <div class="modal-content">
+      <form>
+        <div class="modal-header" style = "background: linear-gradient(.25turn, #4EC6CF, 50%, #70FAC0); border-color: #00E5C9; border-top-left-radius: 5px; border-top-right-radius: 5px">
+          <h3 class="modal-title" style = "color: white">Signup<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button></h3>
+        </div>
+        <div class="modal-body">  
+          <div class="form-group">
+            <input type="text" class="form-control" required="required" placeholder = "Username" style = "font-family: 'Poppins'" value = "" id = "signupUsername" maxLength = "20">
+          </div>
+          <div class="form-group">
+            <input type="password" class="form-control" required="required" placeholder = "Password" style = "font-family: 'Poppins'" value = "" id = "signupPassword" maxLength = "20">
+          </div>
+          <p id = "signupincorrect" style = "color: red">Incorrect username or password</p>
+        </div>
+
+        <div class="modal-footer">
+          <input class="btn btn-default" type = "button" value="Sign up" style = "font-family: 'Poppins'; color: white; background-color: #00E5C9;" id = "signupBtn">
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div id="logoutmodal" class="modal fade">
+	<div class="modal-dialog modal-login" style = "width: 400px">
+		<div class="modal-content">
+			<form>
+				<div class="modal-header" style = "background: linear-gradient(.25turn, #4EC6CF, 50%, #70FAC0); border-color: #00E5C9; border-top-left-radius: 5px; border-top-right-radius: 5px">
+					<h3 class="modal-title" style = "color: white">Logout successful<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button></h3>
+				</div>
+				<div class="modal-footer">
+					<input class="btn btn-default" type = "button" value="Ok" style = "font-family: 'Poppins'; color: white; background-color: #00E5C9" id = "logout">
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+
+</body>
+</html>
+<!--
+<form class = "navbar-form navbar-center" action = "/action_page.php">
+	<nav class = "navbar navbar-default">
+	<div class = "container-fluid">
+		<div class = "navbar-header">
+			<a class = "navbar-brand" href = "#"> TrashBaby </a>
+			<ul class = "nav navbar-nav">
+				
+			</ul>
+		
+		</div>
+		<ul class = "nav navbar-nav navbar-right">
+				<li class="nav-item"><a href = "#"> Log in </a></li>
+				<li class="nav-item"><a href = "#"> Sign up </a></li>
+		</ul>
+	</div>
+</nav>
+
+<div class = "jumbotron" align = "center" style = "padding-top: 15%; padding-bottom: 15%; background-image: url(file:///Users/varsharajesh/Desktop/278132_278132_l_srgb_s_gl_F3.jpg); background-size: cover">
+	<h1 style = "font-size: 70px; color: white; margin-bottom: 2%"> Find your next project </h1>
+	<form>
+		<div class = "input-group" >
+			<input type = "text" class = "form-control" style = "-webkit-border-radius: 50px; -moz-border-radius: 50px; border-radius: 50px; font-family: 'Poppins'; height: 60px; font-size: 30px; padding: 20px" placeholder = "Search for trash">
+			<div class = "input-group-btn">
+				<button class = "btn btn-default" type = "submit" style = "-webkit-border-radius: 50px; -moz-border-radius: 50px; border-radius: 50px; font-family: 'Poppins'; height: 60px">
+					<i class = "glyphicon glyphicon-search"></i>
+				</button>
+			</div>
+		</div>
+	</form>
+</div>
